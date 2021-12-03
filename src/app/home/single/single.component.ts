@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Projetos } from 'src/app/shared/objects/projetos';
-import { AdmService } from 'src/app/shared/service/adm.service';
+import { Heroes } from '../../shared/objects/heroes';
+import { ApiService } from '../../shared/service/api.service';
 
 @Component({
   selector: 'single-view',
   templateUrl: './single.component.html',
   styleUrls: ['./single.component.css'],
 })
-export class viewComponent implements OnInit {
+export class SingleComponent implements OnInit {
   public iDproj: number;
-  public Single: Projetos;
+  public Single: Heroes;
   public loading: boolean;
 
   constructor(
-    protected admService: AdmService,
+    protected apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -25,7 +25,7 @@ export class viewComponent implements OnInit {
   }
 
   single(id: number) {
-    this.admService.projSingle(id).subscribe((callback: any) => {
+    this.apiService.heroSingle(id).subscribe((callback: any) => {
       this.Single = callback;
       this.loading = false;
       console.log('Single', this.Single);

@@ -6,11 +6,11 @@ import { SingleComponent } from './single/single.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: ':id', component: CategoriaComponent },
+  { path: ':id', component: SingleComponent },
 ];
 
 @NgModule({
-  declarations: [HomeComponent, CategoriaComponent],
+  declarations: [HomeComponent, SingleComponent],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })

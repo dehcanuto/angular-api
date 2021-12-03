@@ -1,14 +1,25 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+import { AppComponent } from './app.component';
+import { SingleComponent } from './home/single/single.component';
+
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomeModule',
-    data: { title: 'Marvel API Super Heroes' },
+    path: '',
+    component: AppComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './home/home.module#HomeModule',
+      },
+      {
+        path: ':id',
+        component: SingleComponent,
+      },
+    ],
   },
-  { path: ':id', loadChildren: './single/single.module#PerfilModule' },
+  // { path: ':id', loadChildren: './single/single.module#PerfilModule' },
 ];
 
 @NgModule({

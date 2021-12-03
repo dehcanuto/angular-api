@@ -15,10 +15,9 @@ export abstract class ApiService {
   // Lista todos os herois.
   public listHeroes() {
     const timestamp = Number(new Date());
-    const md5 = new Md5();
-    const hash = md5.create();
+    const hash = new Md5();
 
-    hash.update(
+    hash.appendStr(
       timestamp + this.enviroment.privateKey + this.enviroment.publicKey
     );
 
@@ -27,7 +26,15 @@ export abstract class ApiService {
         this.enviroment.apiUrl
       }/characters?ts=${timestamp}&orderBy=name&limit=10&apikey=${
         this.enviroment.publicKey
-      }&hash=${hash.hex()}`
+      }&hash=${hash.end()}`
+    );
+  }
+
+  // TODO: resolver o retorno por id.
+  // Ver heroi.
+  public heroSingle(id: number) {
+    return this.http.get<Heroes[]>(
+      `${this.enviroment.apiUrl}/characters?identifies=${id}`
     );
   }
 }
