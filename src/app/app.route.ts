@@ -19,7 +19,6 @@ const routes: Routes = [
       },
     ],
   },
-  // { path: ':id', loadChildren: './single/single.module#PerfilModule' },
 ];
 
 @NgModule({
