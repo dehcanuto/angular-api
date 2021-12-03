@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Heroes } from '../shared/objects/heroes';
 import { ApiService } from '../shared/service/api.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ApiService } from '../shared/service/api.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  public heroesflow: Array<any>;
+  public heroesflow: Heroes;
   public loading: boolean = true;
   public paginacao: Array<any>;
 
